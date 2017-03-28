@@ -1,16 +1,16 @@
 (function (global, factory) {
 	if (typeof define === "function" && define.amd) {
-		define(['exports', 'react', 'react-dom', 'draft-js', 'classnames', './InputError'], factory);
+		define(['exports', 'react', 'react-dom', 'draft-js', 'classnames', './SvgIcon', './InputError'], factory);
 	} else if (typeof exports !== "undefined") {
-		factory(exports, require('react'), require('react-dom'), require('draft-js'), require('classnames'), require('./InputError'));
+		factory(exports, require('react'), require('react-dom'), require('draft-js'), require('classnames'), require('./SvgIcon'), require('./InputError'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.react, global.reactDom, global.draftJs, global.classnames, global.InputError);
+		factory(mod.exports, global.react, global.reactDom, global.draftJs, global.classnames, global.SvgIcon, global.InputError);
 		global.RichieView = mod.exports;
 	}
-})(this, function (exports, _react, _reactDom, _draftJs, _classnames, _InputError) {
+})(this, function (exports, _react, _reactDom, _draftJs, _classnames, _SvgIcon, _InputError) {
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -24,6 +24,8 @@
 	var Draft = _interopRequireWildcard(_draftJs);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
 
 	var _InputError2 = _interopRequireDefault(_InputError);
 
@@ -94,7 +96,7 @@
 								return _react2.default.createElement(
 									'button',
 									{ key: option.key, className: classNameInline, type: 'button', onMouseDown: _this.props.onInlineFunctionClick.bind(null, option.key), title: option.label },
-									_react2.default.createElement(SvgIcon, { iconId: option.icon })
+									_react2.default.createElement(_SvgIcon2.default, { iconId: option.icon })
 								);
 							}),
 							this.props.blockStyleFunctions.map(function (option, index) {
@@ -105,13 +107,13 @@
 								return _react2.default.createElement(
 									'button',
 									{ key: option.key, className: classNameBlock, type: 'button', onMouseDown: _this.props.onBlockFunctionClick.bind(null, option.key), title: option.label },
-									_react2.default.createElement(SvgIcon, { iconId: option.icon })
+									_react2.default.createElement(_SvgIcon2.default, { iconId: option.icon })
 								);
 							}),
 							_react2.default.createElement(
 								'button',
 								{ className: 'richie_buttons_button', type: 'button', onMouseDown: this.props.openLinkEditor, title: !this.props.hasEntity ? "Add link" : "Edit link" },
-								!this.props.hasEntity ? _react2.default.createElement(SvgIcon, { iconId: 'editorlink' }) : _react2.default.createElement(SvgIcon, { iconId: 'editorunlink' })
+								!this.props.hasEntity ? _react2.default.createElement(_SvgIcon2.default, { iconId: 'editorlink' }) : _react2.default.createElement(_SvgIcon2.default, { iconId: 'editorunlink' })
 							)
 						)
 					),
@@ -158,8 +160,6 @@
 			);
 		}
 	});
-
-	//import SvgIcon from '../svg-icon/svg-icon'
 
 	exports.default = RichieView;
 });

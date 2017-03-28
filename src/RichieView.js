@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import * as Draft from 'draft-js'
 import classnames from 'classnames'
 
-//import SvgIcon from '../svg-icon/svg-icon'
+import SvgIcon from './SvgIcon'
 
 import InputError from './InputError'
 
