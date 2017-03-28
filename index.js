@@ -1,4 +1,4 @@
-const helpers = require('./dist/helpers.js')
+var helpers = require('./dist/helpers.js');
 
 module.exports = {
 	RichieEditor: require('./dist/RichieContainer.js'),
