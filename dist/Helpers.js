@@ -16,7 +16,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.decorator = exports.collapseSelectionToEnd = exports.getCharCount = exports.getWordCount = undefined;
+	exports.createEditorStateWithContent = exports.createEmptyEditorState = exports.decorator = exports.collapseSelectionToEnd = exports.getCharCount = exports.getWordCount = undefined;
 
 	var _react2 = _interopRequireDefault(_react);
 
@@ -24,6 +24,13 @@
 		return obj && obj.__esModule ? obj : {
 			default: obj
 		};
+	}
+
+	function findLinkEntities(contentBlock, callback) {
+		contentBlock.findEntityRanges(function (character) {
+			var entityKey = character.getEntity();
+			return entityKey !== null && _draftJs.Entity.get(entityKey).getType() === 'LINK';
+		}, callback);
 	}
 
 	var getWordCount = exports.getWordCount = function getWordCount(editorState) {
@@ -70,10 +77,12 @@
 			}
 		}
 	}]);
-	function findLinkEntities(contentBlock, callback) {
-		contentBlock.findEntityRanges(function (character) {
-			var entityKey = character.getEntity();
-			return entityKey !== null && _draftJs.Entity.get(entityKey).getType() === 'LINK';
-		}, callback);
-	}
+
+	var createEmptyEditorState = exports.createEmptyEditorState = function createEmptyEditorState() {
+		return _draftJs.EditorState.createEmpty(decorator);
+	};
+
+	var createEditorStateWithContent = exports.createEditorStateWithContent = function createEditorStateWithContent(content) {
+		return _draftJs.EditorState.createWithContent((0, _draftJs.convertFromRaw)(content), decorator);
+	};
 });

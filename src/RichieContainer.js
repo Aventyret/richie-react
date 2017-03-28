@@ -44,7 +44,7 @@ const RichieContainer = React.createClass({
 
 	getInitialState: function () {
 		return {
-			editorState: Draft.EditorState.createEmpty(),
+			editorState: EditorHelpers.createEmptyEditorState(),
 			wordCount: 0,
 			charCount: 0,
 			errorVisible: false,

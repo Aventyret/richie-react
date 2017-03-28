@@ -1,5 +1,20 @@
-import {EditorState, convertFromRaw , CompositeDecorator , Entity} from 'draft-js'
+import {EditorState, convertFromRaw, CompositeDecorator, Entity} from 'draft-js'
 import React from 'react'
+
+
+function findLinkEntities(contentBlock, callback) {
+	contentBlock.findEntityRanges(
+		(character) => {
+			const entityKey = character.getEntity();
+			return (
+				entityKey !== null &&
+				Entity.get(entityKey).getType() === 'LINK'
+			);
+		},
+		callback
+	);
+}
+
 
 export const getWordCount = function(editorState) {
 	const plainText = editorState.getCurrentContent().getPlainText('');
@@ -46,15 +61,11 @@ export const decorator = new CompositeDecorator([
 		}
 	}
 ]);
-function findLinkEntities(contentBlock, callback) {
-	contentBlock.findEntityRanges(
-		(character) => {
-			const entityKey = character.getEntity();
-			return (
-				entityKey !== null &&
-				Entity.get(entityKey).getType() === 'LINK'
-			);
-		},
-		callback
-	);
-}
+
+export const createEmptyEditorState = function(){
+	return EditorState.createEmpty(decorator);
+};
+
+export const createEditorStateWithContent = function(content){
+	return EditorState.createWithContent(convertFromRaw(content), decorator);
+};
