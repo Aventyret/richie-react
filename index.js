@@ -1,9 +1,9 @@
-var helpers = require('./dist/helpers.js');
+var Helpers = require('./dist/Helpers.js');
 
 module.exports = {
 	RichieEditor: require('./dist/RichieContainer.js'),
 	RichieUtils: {
-		createEmptyEditorState: helpers.createEmptyEditorState,
-		createEditorStateWithContent: helpers.createEditorStateWithContent
+		createEmptyEditorState: Helpers.createEmptyEditorState,
+		createEditorStateWithContent: Helpers.createEditorStateWithContent
 	}
 };
