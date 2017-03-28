@@ -1,3 +1,1 @@
-var Richie = require('./lib/RichieContainer');
-
-module.exports = Richie;
+module.exports = require('./dist/RichieContainer.js');
