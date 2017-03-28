@@ -1,3 +1,3 @@
-import RichieContainer from './lib/RichieContainer';
+var Richie = require('./lib/RichieContainer');
 
-module.exports = RichieContainer;
+module.exports = Richie;
